@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@clerk/nextjs";
 
 export const Content = () => {
+  const { isSignedIn } = useAuth();
+
   return (
     <div className="flex items-center flex-col">
       <div className="mt-10">
@@ -18,8 +23,8 @@ export const Content = () => {
           edit, and publish engaging shorts with ease!
         </p>
         {/* TODO: check if user is login => dashboard page or sign up page */}
-        <Link href="/sign-up">
-          <Button className="rounded-full p-5 md:p-8  text-[16px] md:text-2xl text-center font-bold bg-white text-black">
+        <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
+          <Button className="rounded-full p-5 md:p-8  text-[16px] md:text-2xl text-center font-bold bg-white hover:bg-white text-black">
             Get Started
           </Button>
         </Link>

@@ -46,7 +46,7 @@ export const SidebarRoutes = () => {
           <Link
             key={route.label}
             href={route.path}
-            className="flex items-center gap-2 py-4 text-white"
+            className={`flex items-center gap-2 py-4 text-white `}
           >
             <route.icon className="text-white h-5 w-5" />
             {route.label}

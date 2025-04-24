@@ -5,9 +5,10 @@ import { SidebarRoutes } from "./sidebar-routes";
 import { Button } from "@/components/ui/button";
 import { Logo } from "./logo";
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
+import { useState, createContext } from "react";
+import { cn } from "@/lib/utils";
 
-// const SidebarContext = createContext();
+export const SidebarContext = createContext(false);
 
 export const Sidebar = () => {
   const [expanded, setExpanded] = useState(true);
@@ -16,26 +17,29 @@ export const Sidebar = () => {
     <>
       <div className="h-16 px-4 flex items-center justify-between">
         <div
-          className={`overflow-hidden transition-all ${
-            expanded ? "flex" : "hidden"
-          }`}
+          className={cn("flex overflow-hidden", expanded ? "flex" : "hidden")}
         >
           <Logo />
         </div>
+
         <Button
           size="icon"
-          className="cursor-pointer"
+          className={cn(
+            "cursor-pointer transition-all",
+            expanded ? "flex" : "-ml-2"
+          )}
           onClick={() => setExpanded((curr) => !curr)}
         >
-          <PanelLeftClose className="h-6 w-6" />
+          <PanelLeftClose className="h-5 w-5" />
         </Button>
       </div>
-      <Separator
-        className={` bg-white/5 overflow-hidden transition-all ${
-          expanded ? "w-72" : "w-0"
-        }`}
-      />
-      <SidebarRoutes />
+      {expanded && (
+        <Separator className="bg-white/5 overflow-hidden transition-all" />
+      )}
+
+      <SidebarContext.Provider value={expanded}>
+        <SidebarRoutes />
+      </SidebarContext.Provider>
     </>
   );
 };

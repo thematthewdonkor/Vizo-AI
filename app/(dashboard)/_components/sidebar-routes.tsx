@@ -5,7 +5,8 @@ import {
   Users,
   Settings,
 } from "lucide-react";
-
+import { useContext } from "react";
+import { SidebarContext } from "./sidebar";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 
@@ -39,6 +40,8 @@ const routes = [
 ];
 
 export const SidebarRoutes = () => {
+  const expanded = useContext(SidebarContext);
+
   return (
     <>
       <div className="md:mt-8 px-4 flex flex-col gap-2">
@@ -46,14 +49,16 @@ export const SidebarRoutes = () => {
           <Link
             key={route.label}
             href={route.path}
-            className={`flex items-center gap-2 py-4 text-white `}
+            className={`flex items-center gap-2 py-4 `}
           >
             <route.icon className="text-white h-5 w-5" />
-            {route.label}
+            {expanded && (
+              <span className=" text-white text-sm">{route.label}</span>
+            )}
           </Link>
         ))}
       </div>
-      <Separator className="w-72 bg-white/5 mt-6" />
+      {expanded && <Separator className="w-72 bg-white/5 mt-6" />}
     </>
   );
 };

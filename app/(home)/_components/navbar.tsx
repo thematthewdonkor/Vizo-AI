@@ -60,13 +60,13 @@ export const Navbar = () => {
               <Menu />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left">
+          <SheetContent side="left" className="bg-accent-foreground">
             <div className="flex flex-col gap-6 p-5">
               {routes.map((route) => (
                 <Link
                   key={route.label}
                   href={route.href}
-                  className={cn("text-sm")}
+                  className={cn("text-sm text-white")}
                 >
                   {route.label}
                 </Link>

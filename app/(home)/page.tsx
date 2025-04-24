@@ -1,4 +1,4 @@
-import { Explore } from "./_components/explore";
+import Explore from "../(dashboard)/(routes)/explore/page";
 import { Navbar } from "./_components/navbar";
 import { Content } from "./_components/content";
 

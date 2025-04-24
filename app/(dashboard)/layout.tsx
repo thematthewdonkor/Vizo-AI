@@ -1,16 +1,10 @@
-"use client";
-
-import { useContext } from "react";
-
 import { Navbar } from "./_components/navbar";
 import { Sidebar } from "./_components/sidebar";
-import { SidebarContext } from "./_components/sidebar";
+
 import { cn } from "@/lib/utils";
 // import { Separator } from "@/components/ui/separator";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const expanded = useContext(SidebarContext);
-
   return (
     <div
       className="

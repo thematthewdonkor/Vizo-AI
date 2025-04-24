@@ -60,7 +60,10 @@ export const Navbar = () => {
               <Menu />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="bg-accent-foreground">
+          <SheetContent
+            side="left"
+            className="bg-accent-foreground text-white focus-visible:ring-0 focus-visible:outline-none"
+          >
             <div className="flex flex-col gap-6 p-5">
               {routes.map((route) => (
                 <Link

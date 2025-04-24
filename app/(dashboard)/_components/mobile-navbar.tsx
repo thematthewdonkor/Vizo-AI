@@ -18,7 +18,7 @@ export const MobileNavbar = () => {
             <Menu />
           </Button>
         </SheetTrigger>
-        <SheetContent className="bg-accent-foreground">
+        <SheetContent className="bg-accent-foreground text-white">
           <div className="px-4 py-2">
             <UserButton />
           </div>

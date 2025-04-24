@@ -1,3 +1,6 @@
+"use client";
+
+import { useContext } from "react";
 import {
   LayoutDashboard,
   SquarePlus,
@@ -5,10 +8,10 @@ import {
   Users,
   Settings,
 } from "lucide-react";
-import { useContext } from "react";
 import { SidebarContext } from "./sidebar";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const routes = [
   {
@@ -52,9 +55,15 @@ export const SidebarRoutes = () => {
             className={`flex items-center gap-2 py-4 `}
           >
             <route.icon className="text-white h-5 w-5" />
-            {expanded && (
-              <span className=" text-white text-sm">{route.label}</span>
-            )}
+
+            <span
+              className={cn(
+                " text-white text-sm",
+                expanded ? "flex" : "md:hidden"
+              )}
+            >
+              {route.label}
+            </span>
           </Link>
         ))}
       </div>

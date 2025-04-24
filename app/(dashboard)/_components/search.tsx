@@ -25,7 +25,8 @@ export const SearchPage = () => {
         w-full 
         border-none
         text-white  
-        placeholder:text-white/70"
+        placeholder:text-white/70
+        "
       />
     </div>
   );

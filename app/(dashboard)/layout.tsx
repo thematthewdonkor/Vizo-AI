@@ -1,8 +1,16 @@
+"use client";
+
+import { useContext } from "react";
+
 import { Navbar } from "./_components/navbar";
 import { Sidebar } from "./_components/sidebar";
+import { SidebarContext } from "./_components/sidebar";
+import { cn } from "@/lib/utils";
 // import { Separator } from "@/components/ui/separator";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  const expanded = useContext(SidebarContext);
+
   return (
     <div
       className="
@@ -12,18 +20,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     >
       {/* <Separator className="w-72 bg-white/5" orientation="vertical" /> */}
       <div
-        className="
-      hidden 
-      md:flex 
-      flex-col 
-      h-full 
-      w-72 
-      z-80 
-      fixed 
-      inset-y-0 
-      border-r
-      border-r-white/5
-     "
+        className={cn(
+          "hidden w-72 md:flex flex-col h-full z-80 fixed inset-y-0 border-r border-r-white/5"
+        )}
       >
         <Sidebar />
       </div>

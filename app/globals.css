@@ -41,6 +41,20 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Base font families */
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-roboto-mono);
+
+  /* Custom Inter-specific weights */
+  --font-inter-thin: 100;
+  --font-inter-light: 300;
+  --font-inter-regular: 400;
+  --font-inter-medium: 500;
+  --font-inter-semibold: 600;
+  --font-inter-bold: 700;
+  --font-inter-extrabold: 800;
+  --font-inter-black: 900;
 }
 
 :root {

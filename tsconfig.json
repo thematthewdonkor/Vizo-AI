@@ -26,8 +26,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/(dashboard)/(routes)/create-video"
+    ".next/types/**/*.ts"
+    // "app/(dashboard)/(routes)/create-video"
   ],
   "exclude": ["node_modules"]
 }

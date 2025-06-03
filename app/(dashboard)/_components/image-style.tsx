@@ -1,7 +1,8 @@
-import React from "react";
+"use client";
+
 import Image from "next/image";
 
-const videostyles = [
+const videostyles: VideoStyles[] = [
   { image: "/images/realistic.jpg", text: "Realistic" },
   { image: "/images/mysterious.jpg", text: "Cinematic" },
   { image: "/images/walk.jpg", text: "anime" },
@@ -9,6 +10,7 @@ const videostyles = [
 ];
 
 export const ImageStyle = () => {
+  // const [selected, setSelected] = useState<VideoStyles>();
   return (
     <div className="flex flex-col gap-2">
       <h2 className="text-white font-[--font-inter-regular]">Video Style</h2>

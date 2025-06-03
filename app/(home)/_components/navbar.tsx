@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@clerk/nextjs";
 
 import { cn } from "@/lib/utils";
 
@@ -23,31 +23,43 @@ export const routes = [
     href: "/explore",
   },
 
-  {
-    label: "Sign up",
-    href: "/sign-up",
-  },
+  // {
+  //   label: "Sign up",
+  //   href: "/sign-up",
+  // },
 ];
 
 export const Navbar = () => {
-  const pathname = usePathname();
-  return (
-    <div className="w-full bg-transparent p-5 ">
-      <div className="hidden md:flex md:justify-center md:gap-20 ">
-        {routes.map((route) => (
-          <Link
-            key={route.label}
-            href={route.href}
-            className={cn(
-              "text-sm text-center",
-              pathname === route.href ? "text-white font-bold" : "text-white"
-            )}
-          >
-            {route.label}
-          </Link>
-        ))}
-      </div>
+  const { isSignedIn } = useUser();
 
+  return (
+    <div className="w-full bg-transparent p-5">
+      <div className="hidden sm:flex justify-center items-center font-[--font-inter-black]">
+        <div className="flex gap-4">
+          {routes.map((route) => (
+            <Link
+              key={route.label}
+              href={route.href}
+              className="text-white text-md"
+            >
+              {route.label}
+            </Link>
+          ))}
+        </div>
+
+        <div className="flex">
+          <Link href={`${isSignedIn ? "/dashboard" : "/sign-in"}`}>
+            <Button className="text-md cursor-pointer ">Sign in</Button>
+          </Link>
+          <Link
+            className="sm:-ml-3"
+            href={`${isSignedIn ? "/dashboard" : "/sign-up"}`}
+          >
+            <Button className="text-md cursor-pointer">Sign up</Button>
+          </Link>
+        </div>
+      </div>
+      {/* Mobile device */}
       <div className="md:hidden ">
         <Sheet>
           <SheetTrigger asChild>
@@ -64,12 +76,12 @@ export const Navbar = () => {
             side="left"
             className="bg-accent-foreground text-white focus-visible:ring-0 focus-visible:outline-none"
           >
-            <div className="flex flex-col gap-6 p-5">
+            <div className="flex flex-col gap-6 p-5 font-[--font-inter-black]">
               {routes.map((route) => (
                 <Link
                   key={route.label}
                   href={route.href}
-                  className={cn("text-sm text-white")}
+                  className={cn("text-md text-white")}
                 >
                   {route.label}
                 </Link>

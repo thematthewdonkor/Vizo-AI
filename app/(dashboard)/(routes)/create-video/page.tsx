@@ -7,9 +7,23 @@ import { Topic } from "../../_components/topic";
 import { Voice } from "../../_components/voice";
 import { Captions } from "../../_components/captions";
 import { ImageStyle } from "../../_components/image-style";
+import { Stars } from "lucide-react";
+
+interface FormData {
+  topic?: { value: string };
+}
 
 const CreateVideo = () => {
   const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState<FormData>({});
+  console.log(formData);
+
+  const handleChange = (field: string, value: { topic: string }) => {
+    setFormData((initialState) => ({
+      ...initialState,
+      [field]: value,
+    }));
+  };
 
   return (
     <div className="md:px-4 lg:px-12 px-8 mt-6">
@@ -39,13 +53,29 @@ const CreateVideo = () => {
           {/* Form */}
           <div className="col-span-2 space-y-4">
             {/* Video topic & Scripts */}
-            <Topic />
+            <Topic handleChange={handleChange} />
             {/* {Video Image style } */}
             <ImageStyle />
             {/* Voice  */}
             <Voice />
             {/* Captions */}
             <Captions />
+
+            <Button
+              size="sm"
+              className="
+              bg-white 
+              text-black
+              text-sm
+              hover:bg-white
+              hover:text-black
+              w-full
+              font-[--font-inter-regular]
+           "
+            >
+              <Stars size={24} />
+              Generate scripts
+            </Button>
           </div>
           {/* Preview */}
           <div>

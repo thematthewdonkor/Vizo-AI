@@ -16,7 +16,7 @@ export const Voice = () => {
           <div key={voice.name}>
             <Button
               size="sm"
-              className="bg-stone-900 hover:bg-stone-900 text-xs font-[--font-inter-thin]"
+              className="bg-stone-900 hover:bg-stone-900 text-sm font-[--font-inter-thin]"
             >
               {voice.name}
             </Button>
